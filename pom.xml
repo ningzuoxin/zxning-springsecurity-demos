@@ -16,6 +16,7 @@
 
     <modules>
         <module>01-springsecurity-stateless</module>
+        <module>02-springsecurity-stateless-webflux</module>
     </modules>
 
 </project>
