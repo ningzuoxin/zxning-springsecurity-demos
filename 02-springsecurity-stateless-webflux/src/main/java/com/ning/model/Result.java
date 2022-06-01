@@ -1,4 +1,4 @@
-package ning.model;
+package com.ning.model;
 
 import java.io.Serializable;
 

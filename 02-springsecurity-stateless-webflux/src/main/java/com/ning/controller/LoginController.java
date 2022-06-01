@@ -1,6 +1,6 @@
-package ning.controller;
+package com.ning.controller;
 
-import ning.model.Result;
+import com.ning.model.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;

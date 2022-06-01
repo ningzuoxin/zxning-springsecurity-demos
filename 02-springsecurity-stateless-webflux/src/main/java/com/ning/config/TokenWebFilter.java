@@ -1,7 +1,7 @@
-package ning.config;
+package com.ning.config;
 
 import cn.hutool.core.util.StrUtil;
-import ning.repository.AuthenticationRepository;
+import com.ning.repository.AuthenticationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

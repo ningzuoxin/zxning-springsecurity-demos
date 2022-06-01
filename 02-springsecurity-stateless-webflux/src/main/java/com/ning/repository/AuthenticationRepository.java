@@ -1,4 +1,4 @@
-package ning.repository;
+package com.ning.repository;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Repository;
