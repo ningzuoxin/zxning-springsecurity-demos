@@ -25,7 +25,7 @@ public class TokenAuthenticationSuccessHandler implements AuthenticationSuccessH
         String token = IdUtil.simpleUUID();
         authenticationRepository.add(token, authentication);
 
-        Result<String> result = Result.data(token, "LOGIN SUCCESS");
+        Result<String> result = Result.data(200, token, "LOGIN SUCCESS");
         HttpServletResponseUtils.print(response, result);
     }
 }

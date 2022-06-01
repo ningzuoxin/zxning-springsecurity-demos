@@ -51,14 +51,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // 放行 /login 请求，其他请求必须经过认证
         http.authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated()
+                // 配置退出成功处理器
                 .and().logout().logoutSuccessHandler(tokenLogoutSuccessHandler)
+                // 配置无访问权限处理器
                 .and().exceptionHandling().accessDeniedHandler(new TokenAccessDeniedHandler())
+                // 指定登录请求url
                 .and().formLogin().loginPage("/login")
+                // 配置认证成功处理器
                 .successHandler(tokenAuthenticationSuccessHandler)
+                // 配置认证失败处理器
                 .failureHandler(tokenAuthenticationFailureHandler)
+                // 将 session 管理策略设置为 STATELESS （无状态）
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                // 禁用防止 csrf
                 .and().csrf().disable()
+                // 在 UsernamePasswordAuthenticationFilter 过滤器之前，添加自定义的 token 认证过滤器
                 .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
