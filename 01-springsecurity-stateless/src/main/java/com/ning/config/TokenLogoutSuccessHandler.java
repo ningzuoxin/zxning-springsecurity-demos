@@ -22,16 +22,12 @@ public class TokenLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        Result<String> result = null;
-
         String token = request.getHeader("token");
-        if (StrUtil.isEmpty(token)) {
-            result = Result.data(-1, "NEED TOKEN", "ERROR");
-        } else {
+        if (StrUtil.isNotEmpty(token)) {
             authenticationRepository.delete(token);
-            result = Result.data(200, "LOGOUT SUCCESS", "OK");
         }
 
+        Result<String> result = Result.data(200, "LOGOUT SUCCESS", "OK");
         HttpServletResponseUtils.print(response, result);
     }
 
