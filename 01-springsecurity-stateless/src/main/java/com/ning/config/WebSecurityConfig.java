@@ -30,6 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private TokenAuthenticationFailureHandler tokenAuthenticationFailureHandler;
     @Autowired
     private TokenAuthenticationFilter tokenAuthenticationFilter;
+    @Autowired
+    private TokenLogoutSuccessHandler tokenLogoutSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -50,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated()
-                .and().logout().logoutUrl("/logout")
+                .and().logout().logoutSuccessHandler(tokenLogoutSuccessHandler)
                 .and().exceptionHandling().accessDeniedHandler(new TokenAccessDeniedHandler())
                 .and().formLogin().loginPage("/login")
                 .successHandler(tokenAuthenticationSuccessHandler)

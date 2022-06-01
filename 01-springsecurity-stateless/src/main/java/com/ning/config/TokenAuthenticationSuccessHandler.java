@@ -1,9 +1,9 @@
 package com.ning.config;
 
 import cn.hutool.core.util.IdUtil;
-import cn.hutool.json.JSONUtil;
 import com.ning.model.Result;
 import com.ning.repository.AuthenticationRepository;
+import com.ning.util.HttpServletResponseUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -26,10 +26,6 @@ public class TokenAuthenticationSuccessHandler implements AuthenticationSuccessH
         authenticationRepository.add(token, authentication);
 
         Result<String> result = Result.data(token, "LOGIN SUCCESS");
-
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
-        response.getWriter().println(JSONUtil.toJsonStr(result));
-        response.getWriter().flush();
+        HttpServletResponseUtils.print(response, result);
     }
 }

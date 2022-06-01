@@ -1,6 +1,7 @@
 package com.ning.repository;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +21,7 @@ public class AuthenticationRepository {
 
     public void delete(String key) {
         if (authentications.contains(key)) {
+            SecurityContextHolder.clearContext();
             authentications.remove(key);
         }
     }
