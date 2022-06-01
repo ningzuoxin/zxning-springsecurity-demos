@@ -40,11 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
+        // 权限配置
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("index"));
         authorities.add(new SimpleGrantedAuthority("hasAuthority"));
         authorities.add(new SimpleGrantedAuthority("ROLE_hasRole"));
 
+        // 认证信息
         UserDetails userDetails = User.builder().username("admin").password(passwordEncoder().encode("123456")).authorities(authorities).build();
         return new InMemoryUserDetailsManager(userDetails);
     }
