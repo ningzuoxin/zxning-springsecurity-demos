@@ -19,7 +19,7 @@ public class AuthenticationRepository {
     }
 
     public void delete(String key) {
-        if (authentications.contains(key)) {
+        if (authentications.containsKey(key)) {
             authentications.remove(key);
         }
     }

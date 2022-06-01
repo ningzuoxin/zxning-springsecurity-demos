@@ -1,4 +1,4 @@
-package ning;
+package com.ning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
