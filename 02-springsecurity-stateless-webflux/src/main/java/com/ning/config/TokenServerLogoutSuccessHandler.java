@@ -21,11 +21,7 @@ public class TokenServerLogoutSuccessHandler implements ServerLogoutSuccessHandl
     public Mono<Void> onLogoutSuccess(WebFilterExchange exchange, Authentication authentication) {
         String token = exchange.getExchange().getRequest().getHeaders().getFirst("token");
         if (StrUtil.isNotEmpty(token)) {
-            try {
-                authenticationRepository.delete(token);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            authenticationRepository.delete(token);
         }
 
         Result<String> result = Result.data(200, "LOGOUT SUCCESS", "OK");
