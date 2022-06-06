@@ -54,6 +54,7 @@ public class WebFluxSecurityConfig {
                         .authenticationSuccessHandler(tokenServerAuthenticationSuccessHandler)
                         .authenticationFailureHandler(tokenServerAuthenticationFailureHandler)
                 )
+                .logout(s -> s.logoutSuccessHandler(new TokenServerLogoutSuccessHandler()))
                 .authorizeExchange(s -> s.pathMatchers("/login").permitAll().anyExchange().authenticated())
                 .exceptionHandling().accessDeniedHandler(new TokenServerAccessDeniedHandler());
         return http.build();
