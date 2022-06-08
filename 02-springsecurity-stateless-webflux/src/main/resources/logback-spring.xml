@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!--    <property name="PROJECT_NAME" value="user-manage-service"/>-->
+<!--    <property name="LOG_FILE_PATH" value="/opt/logs/springboot/${PROJECT_NAME}"/>-->
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+<!--    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${FILE_LOG_PATTERN}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${LOG_FILE_PATH}/${PROJECT_NAME}.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${LOG_FILE_PATH}/${PROJECT_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--            <totalSizeCap>3GB</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--            <Pattern>%d{yyyy-MM-dd HH:mm:ss} -%msg%n</Pattern>-->
+<!--        </layout>-->
+<!--    </appender>-->
+
+<!--    <root level="DEBUG">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--        <appender-ref ref="LOG_FILE"/>-->
+<!--    </root>-->
+
+    <logger name="org.springframework.security.web.server.authorization.AuthorizationWebFilter" level="DEBUG" />
+
+</configuration>
