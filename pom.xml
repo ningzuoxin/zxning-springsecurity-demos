@@ -15,8 +15,9 @@
     </parent>
 
     <modules>
-        <module>01-springsecurity-stateless</module>
-        <module>02-springsecurity-stateless-webflux</module>
+        <module>T01-springsecurity-stateless</module>
+        <module>T02-springsecurity-stateless-webflux</module>
+        <module>T03-springsecurity-oauth2</module>
     </modules>
 
 </project>

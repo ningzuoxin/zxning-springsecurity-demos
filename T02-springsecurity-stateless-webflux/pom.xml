@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>springsecurity-stateless-webflux</artifactId>
+    <artifactId>T02-springsecurity-stateless-webflux</artifactId>
 
     <properties>
         <java.version>1.8</java.version>
