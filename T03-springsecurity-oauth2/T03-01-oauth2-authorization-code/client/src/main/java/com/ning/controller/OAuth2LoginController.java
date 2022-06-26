@@ -24,4 +24,9 @@ public class OAuth2LoginController {
         return map;
     }
 
+    @GetMapping("/test")
+    public Object test() {
+        return "test";
+    }
+
 }

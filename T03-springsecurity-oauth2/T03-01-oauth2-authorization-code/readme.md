@@ -17,6 +17,7 @@ http://127.0.0.1:8080/login/oauth2/code/login-client?code=EbfJkvjhKhJUM2ln8vOX-c
 15、成功拿到 token 后，步骤 13 会继续往下执行，
 16、NimbusJwkSetEndpointFilter 会处理 /oauth2/jwks 请求。
 
+# Ajax 请求的http头信息特点 x-requested-with
 https://www.iteye.com/blog/rd-030-2316105
 
 org.springframework.security.web.session.DisableEncodeUrlFilter
