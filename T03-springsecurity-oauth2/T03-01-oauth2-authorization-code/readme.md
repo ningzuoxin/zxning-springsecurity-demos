@@ -45,8 +45,12 @@ Q1：为什么在浏览器请求 http://127.0.0.1:8080 会跳转到 http://127.0
 较关键的过滤器：
 org.springframework.security.oauth2.server.authorization.web.OAuth2AuthorizationEndpointFilter
 
--- 获取code请求示例，请求成功
-http://localhost:9000/oauth2/authorize?response_type=code&client_id=test_client_id&scope=test_scope&state=1234565&redirect_uri=http://www.baidu.com/
+-- 获取 code 请求
+http://127.0.0.1:9000/oauth2/authorize?response_type=code&client_id=test_client_id&scope=test_scope&state=123456&redirect_uri=http://www.baidu.com/
+-- 相关的类
+OAuth2AuthorizationEndpointFilter
+OAuth2AuthorizationCodeRequestAuthenticationConverter
+OAuth2AuthorizationCodeRequestAuthenticationProvider
 
 -- 获取token请求示例，请求失败
 http://127.0.0.1:9000/oauth2/token?code=f2hdwc7h-tPI4qsA03zAOD0sgM2_Ha5XriAN6Lr6zc9BiRB7_xWkQ2yPTbtib9KphJlPbbCdk6LUuLMesTYX45RLWihODNyxDQzb1pDe0PCNx_b5psF43B1-fqqWWCFZ&redirect_uri=http://www.baidu.com/&grant_type=authorization_code
