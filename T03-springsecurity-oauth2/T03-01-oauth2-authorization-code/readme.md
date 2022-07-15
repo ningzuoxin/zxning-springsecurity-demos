@@ -48,11 +48,22 @@ org.springframework.security.oauth2.server.authorization.web.OAuth2Authorization
 -- 获取 code 请求
 http://127.0.0.1:9000/oauth2/authorize?response_type=code&client_id=test_client_id&scope=test_scope&state=123456&redirect_uri=http://www.baidu.com/
 -- 相关的类
-OAuth2AuthorizationEndpointFilter
-OAuth2AuthorizationCodeRequestAuthenticationConverter
-OAuth2AuthorizationCodeRequestAuthenticationProvider
+OAuth2AuthorizationEndpointFilter   // 处理 /oauth2/authorize 请求        
+OAuth2AuthorizationCodeRequestAuthenticationConverter   // 将 request 封装为 OAuth2AuthorizationCodeRequestAuthenticationToken    
+OAuth2AuthorizationCodeRequestAuthenticationProvider    // 对 OAuth2AuthorizationCodeRequestAuthenticationToken 进行认证，若认证通过则创建 code，并将 code 保存至 OAuth2AuthorizationService。
+注意：在 OAuth2AuthorizationEndpointFilter 中的 AuthenticationSuccessHandler 和 AuthenticationFailureHandler 是在构造方法中指定的，不能进行配置。源码如下：
+    this.authenticationSuccessHandler = this::sendAuthorizationResponse;
+    this.authenticationFailureHandler = this::sendErrorResponse;
+    
+-- 获取 token 请求
+http://127.0.0.1:9000/oauth2/token?code=iurW3GpW1GBJ0rRRwZBSsBm3CbOHGzrFPUN1HYT0GzLqaFBoiTROeGDDiTVbXrWHMd02z09Nbm5wmr--TT3VcnhG7ZrZ7oDS-gn4hFmH1Fbt_sdttYOlX3PiTyWSG3cQ&redirect_uri=http://www.baidu.com/&grant_type=authorization_code&client_id=test_client_id&client_secret=test_client_secret
+-- 相关的类
+OAuth2ClientAuthenticationFilter
+AuthenticationConverter(接口)
+ClientSecretPostAuthenticationConverter(AuthenticationConverter 接口的实现之一)
+ClientSecretAuthenticationProvider
+CodeVerifierAuthenticator
 
--- 获取token请求示例，请求失败
-http://127.0.0.1:9000/oauth2/token?code=f2hdwc7h-tPI4qsA03zAOD0sgM2_Ha5XriAN6Lr6zc9BiRB7_xWkQ2yPTbtib9KphJlPbbCdk6LUuLMesTYX45RLWihODNyxDQzb1pDe0PCNx_b5psF43B1-fqqWWCFZ&redirect_uri=http://www.baidu.com/&grant_type=authorization_code
+OAuth2AuthorizationCodeAuthenticationProvider
 
 ```
